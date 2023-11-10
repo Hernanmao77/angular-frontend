@@ -1,0 +1,56 @@
+<h2> Lista de clientes</h2>
+
+<form class="form-content">
+
+    <div class="form-group">
+        <label> Nombre</label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.firstName" name="firstName">
+    </div>
+
+    <div class="form-group">
+        <label> Apellido</label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName" name="lastName">
+    </div>
+
+    <div class="form-group">
+        <label> Localidad</label>
+        <input type="text" class="form-control" id="emailId" [(ngModel)]="employee.emailId" name="emailId">
+    </div>
+
+    <div class="form-group">
+        <label> Estado</label>
+        <select class="form-control" id="state" [(ngModel)]="employee.state" name="state"> 
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+            </select>
+
+    </div>
+
+    <button class="btn btn-success" (click)="filter()">Filtrar</button>
+
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> Nombre</th>
+            <th> Apellido</th>
+            <th> Localidad</th>
+            <th> Estado</th>
+            <th> Acciones </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td> {{ employee.firstName }} </td>
+            <td> {{ employee.lastName }} </td>
+            <td> {{ employee.emailId }} </td>
+            <td> {{ employee.state }} </td>
+            <td>
+                <button (click)="updateEmployee(employee.id)" class="btn btn-info"> Actualizar</button>
+                <button (click)="deleteEmployee(employee)" class="btn btn-danger" style="margin-left: 10px"> Eliminar</button>
+                <button (click)="employeeDetails(employee.id)" class="btn btn-success" style="margin-left: 10px"> Ver detalles</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
